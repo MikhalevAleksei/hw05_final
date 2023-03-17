@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
-from posts.models import Group, Post
+
+from posts.models import Comment, Group, Post
 
 User = get_user_model()
 
@@ -153,4 +154,5 @@ class PostsFormsTest(TestCase):
         self.assertTrue(Comment.objects.filter(
             text='text',
             author=self.user, ).exists())
+
 
