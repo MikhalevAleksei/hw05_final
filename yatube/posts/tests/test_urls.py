@@ -135,8 +135,8 @@ class PostsUrlsTests(TestCase):
         """Проверка 404 для несуществующих страниц."""
         url = '/unexisting_page/'
         clients = (
-            self.authorized_client,
-            self.authorized_client_no_author,
+            self.author_authorized_client,
+            self.no_author_client,
             self.client,
         )
         for role in clients:
