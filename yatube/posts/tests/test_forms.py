@@ -4,7 +4,6 @@ from django.urls import reverse
 
 from posts.models import Comment, Group, Post
 
-
 User = get_user_model()
 
 
@@ -15,7 +14,6 @@ class PostsFormsTest(TestCase):
         cls.author = User.objects.create_user(username='Новый пользователь')
         cls.authorized_client = Client()
         cls.authorized_client.force_login(cls.author)
-
 
     def test_posts_forms_create_post_auth(self):
         """Проверка, создает ли форма пост в базе,
@@ -38,7 +36,6 @@ class PostsFormsTest(TestCase):
 
         self.assertEqual(form_data.get('text'), post_to_check.text)
         self.assertEqual(form_data.get('group'), post_to_check.group.id)
-
 
     def test_posts_forms_edit_post_auth_author(self):
         """Проверка, редактируется ли пост
@@ -70,7 +67,6 @@ class PostsFormsTest(TestCase):
         self.assertEqual(form_data.get('text'), post_to_check.text)
         self.assertEqual(form_data.get('group'), post_to_check.group.id)
 
-
     def test_posts_forms_create_post_not_auth(self):
         """Проверка, создает ли форма пост в базе,
          Не авторизованный пользователь."""
@@ -86,7 +82,6 @@ class PostsFormsTest(TestCase):
         self.assertFalse(Post.objects.filter(
             text='Тестовый пост формы',
         ).exists())
-
 
     def test_posts_forms_edit_post_not_auth(self):
         """Проверка, редактируется ли пост
@@ -110,7 +105,6 @@ class PostsFormsTest(TestCase):
         self.assertFalse(Post.objects.filter(
             text='Новый текст поста',
         ).exists())
-
 
     def test_posts_forms_edit_post_auth_not_author(self):
         """Проверка, редактируется ли пост
@@ -140,7 +134,6 @@ class PostsFormsTest(TestCase):
             text='Новый текст поста',
         ).exists())
 
-
     def test_comment(self):
         """Проверка создания пользователем комментария"""
         post = Post.objects.create(
@@ -163,5 +156,4 @@ class PostsFormsTest(TestCase):
         self.assertEqual(Comment.objects.count(), comments_count + 1)
         self.assertTrue(Comment.objects.filter(
             text='text',
-            author=self.author, ).exists())
-
+            author=self.author).exists())

@@ -39,7 +39,7 @@ class Post(models.Model):
     image = models.ImageField(
         'Картинка',
         upload_to='posts/',
-        blank=True
+        blank=True,
     )
 
     class Meta:
@@ -55,21 +55,21 @@ class Post(models.Model):
 class Comment(models.Model):
     text = models.TextField(
         'Текст комментария',
-        help_text='Введите текст комментария'
+        help_text='Введите текст комментария',
     )
     created = models.DateTimeField('Дата публикации', auto_now_add=True)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='comments',
-        verbose_name='Автор комментария'
+        verbose_name='Автор комментария',
     )
     post = models.ForeignKey(
         Post,
         blank=True, null=True,
         on_delete=models.CASCADE,
         related_name='comments',
-        verbose_name='Запись'
+        verbose_name='Запись',
     )
 
     class Meta:
@@ -85,13 +85,13 @@ class Follow(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='follower',
-        verbose_name='Подписчик'
+        verbose_name='Подписчик',
     )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='following',
-        verbose_name='Автор'
+        verbose_name='Автор',
     )
 
     class Meta:

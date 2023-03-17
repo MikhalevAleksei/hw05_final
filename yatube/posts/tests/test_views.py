@@ -224,7 +224,7 @@ class FollowTests(TestCase):
         """Зарегистрированный пользователь может отписаться."""
         Follow.objects.create(
             user=self.user_follower,
-            author=self.user_following
+            author=self.user_following,
         )
         follower_count = Follow.objects.count()
         self.follower_client.get(reverse(
@@ -240,7 +240,7 @@ class FollowTests(TestCase):
         )
         follow = Follow.objects.create(
             user=self.user_follower,
-            author=self.user_following
+            author=self.user_following,
         )
         response = self.follower_client.get(reverse('posts:follow_index'))
         post = response.context['page_obj'][0]
