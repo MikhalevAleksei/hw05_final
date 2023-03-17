@@ -154,5 +154,3 @@ class PostsFormsTest(TestCase):
         self.assertTrue(Comment.objects.filter(
             text='text',
             author=self.user, ).exists())
-
-
