@@ -44,7 +44,7 @@ class PostsFormsTest(TestCase):
         uploaded = SimpleUploadedFile(
             name='small_image.gif',
             content=small_gif,
-            content_type='image/gif'
+            content_type='image/gif',
         )
         group = Group.objects.create(
             title='Тестовое название группы',

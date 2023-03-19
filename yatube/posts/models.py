@@ -98,10 +98,10 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'подписчик'
         verbose_name_plural = 'подписчики'
-        constraints=[
+        constraints = [
             UniqueConstraint(
-                fields=['user', 'author'],name='unique_author_user'
-            )
+                fields=['user', 'author'], name='unique_author_user',
+            ),
         ]
 
     def __str__(self):
