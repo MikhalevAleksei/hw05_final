@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import UniqueConstraint
 
 User = get_user_model()
 
@@ -31,7 +32,7 @@ class Post(models.Model):
     )
     author = models.ForeignKey(
         User,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
         verbose_name='Автор',
@@ -97,6 +98,11 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'подписчик'
         verbose_name_plural = 'подписчики'
+        constraints=[
+            UniqueConstraint(
+                fields=['user', 'author'],name='unique_author_user'
+            )
+        ]
 
     def __str__(self):
         return f'{self.user.username}, {self.following.username}'
