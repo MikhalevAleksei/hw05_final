@@ -91,8 +91,6 @@ LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
-USE_L10N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
@@ -114,6 +112,8 @@ CUT_TEXT: int = 15
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 CACHES = {
     'default': {
