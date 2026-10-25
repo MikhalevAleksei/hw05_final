@@ -1,11 +1,13 @@
 Django==2.2.16
 mixer==7.1.2
-Pillow==8.3.1
+Pillow==13.0.0
 pytest==6.2.4
 pytest-django==4.4.0
 pytest-pythonpath==0.7.3
 requests==2.26.0
 six==1.16.0
-sorl-thumbnail==12.7.0
+sorl-thumbnail==12.10.0
 Faker==12.0.1
 python-dotenv==1.0.0
+# Django 2.2 imports distutils, removed in Python 3.12
+setuptools
